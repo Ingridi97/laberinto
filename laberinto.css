@@ -1,0 +1,36 @@
+body{
+    font-family:arial, sans-serif;
+    text-align:center;
+    background-color: blueviolet;
+    color:azure;
+}
+
+#maze {
+    display: grid;
+    grid-template-columns: repeat(30, 35px); /* 30 colunas */
+    gap: 2px;
+    margin: 20px auto;
+    width: max-content;
+  }
+  
+  .cell {
+    width: 35px; /* Tamanho das células */
+    height: 35px;
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid #000;
+  }
+  
+  .wall {
+    background-color: #000; /* Cor das paredes */
+  }
+  
+  .exit {
+    background-color: green; /* Cor da saída */
+  }
+  
+  .player {
+    background-color: blue; /* Cor do jogador */
+  }
+  
+  
