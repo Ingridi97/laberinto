@@ -1,36 +1,46 @@
-body{
-    font-family:arial, sans-serif;
-    text-align:center;
-    background-color: blueviolet;
-    color:azure;
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #BF6C3B;
+    color: azure;
 }
 
 #maze {
     display: grid;
-    grid-template-columns: repeat(30, 35px); /* 30 colunas */
-    gap: 2px;
+    grid-template-columns: repeat(30, 35px);
+    gap: 0;
     margin: 20px auto;
     width: max-content;
-  }
-  
-  .cell {
-    width: 35px; /* Tamanho das células */
+}
+
+.cell {
+    width: 35px;
     height: 35px;
     display: inline-block;
-    background-color: #fff;
-    border: 1px solid #000;
-  }
-  
-  .wall {
-    background-color: #000; /* Cor das paredes */
-  }
-  
-  .exit {
-    background-color: green; /* Cor da saída */
-  }
-  
-  .player {
-    background-color: blue; /* Cor do jogador */
-  }
-  
-  
+    border: 2px solid #A6056D;
+    background-color: #A6056D;
+}
+
+.cell.wall {
+    background-image: url('caminho/para/sua/textura-de-pedra.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #7f7f7f;
+    border: 2px solid #444;
+    border-radius: 4px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.cell.exit {
+    border: none;
+    background-color: green;
+    background-image: url("https://img.freepik.com/vetores-gratis/porta-de-madeira-na-parede-de-tijolos_1308-8758.jpg");
+    background-size: cover;
+}
+
+.cell.player {
+    border: none;
+    background-color: blue;
+    background-image: url("https://img.freepik.com/vetores-gratis/ilustracao-do-icone-do-vetor-dos-desenhos-animados-do-sorvete-sobremesa-comida-icone-conceito-vetor-isolado-estilo-flat-cartoon_138676-2521.jpg");
+    background-size: cover;
+}
