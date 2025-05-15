@@ -60,6 +60,9 @@ let timerInterval;
 let laberinto = 1;
 
 function startCountdown() {
+    // Cancela qualquer contagem anterior antes de começar uma nova
+    clearInterval(timerInterval);
+
     timerInterval = setInterval(() => {
         timeLeft--;
         document.getElementById("time").innerText = `Tempo restante: ${timeLeft}s`;
@@ -71,6 +74,7 @@ function startCountdown() {
         }
     }, 1000);
 }
+
 
 function showMazeMessage(text) {
     const messageBox = document.getElementById("maze-message");
@@ -171,7 +175,6 @@ function movePlayer(direction) {
             console.log(laberinto)
             if (laberinto === 3) {
                 showMazeMessage("Você venceu o labirinto!");
-               
             } else{
                 changeMaze(laberinto);
             }
@@ -183,15 +186,26 @@ function movePlayer(direction) {
 }
 
 function resetGame() {
+    clearInterval(timerInterval);
+
+    // Resetar variáveis do jogo
     laberinto = 1;
     currentMazeIndex = 0;
     playerX = 1;
     playerY = 1;
     timeLeft = 90;
-    clearInterval(timerInterval);
-    startCountdown();
-    drawMaze();
+
+    // Esconder elementos do jogo
+    document.getElementById('maze').style.display = 'none';
+    document.getElementById('time').style.display = 'none';
+    document.getElementById('escape-title').style.display = 'none';
+    document.getElementById('restart-button').style.display = 'none';
+
+    // Mostrar tela inicial
+    document.getElementById('start-screen').style.display = 'flex';
 }
+
+
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowUp") {
@@ -207,3 +221,17 @@ document.addEventListener("keydown", (event) => {
 
 drawMaze();
 startCountdown();
+
+// Botão "Iniciar Jogo" — esconde a tela inicial e começa o jogo
+document.getElementById('start-button').addEventListener('click', function () {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('escape-title').style.display = 'block';
+    document.getElementById('time').style.display = 'block';
+    document.getElementById('maze').style.display = 'grid';
+    document.getElementById('restart-button').style.display = 'inline-block';
+
+    drawMaze();
+    startCountdown();
+});
+
+

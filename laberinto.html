@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESCAPE</title>
+    <title>Laberinto</title>
     <link rel="stylesheet" href="laberinto.css">
 </head>
 <body>
-    <h1>ESCAPE</h1>
-    <div id="time">TEMPO = 0</div>
-    <div id="maze"></div>
+
+    <!-- TELA INICIAL -->
+    <div id="start-screen">
+        <h1 id="game-title">Laberinto</h1>
+        <button id="start-button">Iniciar Jogo</button>
+    </div>
+
+    <!-- TÍTULO DURANTE O JOGO -->
+    <h1 id="escape-title" style="display: none;">ESCAPE</h1>
+
+    <!-- ÁREA DO JOGO -->
+    <div id="time" style="display: none;">Tempo = 0</div>
+    <div id="maze" style="display: none;"></div>
     <div id="maze-message"></div>
 
+    <!-- BOTÃO DE REINICIAR -->
+    <button id="restart-button" onclick="resetGame()" style="display: none;">Reiniciar</button>
 
-</div>
-
-    <button onclick="resetGame()">Reiniciar</button>
-
+    <!-- SCRIPT -->
     <script src="laberinto.js"></script>
 </body>
 </html>
