@@ -66,19 +66,54 @@ function startCountdown() {
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("Tempo esgotado! Você perdeu.");
+            showMazeMessage("Tempo esgotado! Você perdeu.");
             resetGame();
         }
     }, 1000);
 }
 
-function changeMaze() {
-    currentMazeIndex = (currentMazeIndex + 1) % mazeDataList.length; // Altera para o próximo labirinto
-    playerX = 1;
-    playerY = 1;
-    laberinto += 1;
-    drawMaze();
+function showMazeMessage(text) {
+    const messageBox = document.getElementById("maze-message");
+    messageBox.innerText = text;
+    messageBox.style.display = "block";  // Exibe a mensagem
+
+    setTimeout(() => {
+        messageBox.style.display = "none";  // Esconde a mensagem após 2 segundos
+    }, 2000);
 }
+
+function changeMaze() {
+    console.log(laberinto)
+    if (laberinto === 2) {
+        // Exibe "Fase Final" quando o jogador avança para a fase 3
+        showMazeMessage("Fase Final!");
+
+        // Espera 2 segundos antes de avançar para a fase 3
+        setTimeout(() => {
+            currentMazeIndex = (currentMazeIndex + 1) % mazeDataList.length;
+            playerX = 1;
+            playerY = 1;
+            laberinto += 1;  // Aumenta para a fase 3
+            drawMaze();  // Redesenha o labirinto
+            console.log(laberinto)
+        }, 2000);
+        
+    } else if(laberinto === 1){
+        // Exibe a mensagem "Você passou de fase" para outras fases
+        showMazeMessage("Você passou de fase!");
+
+        // Espera 2 segundos antes de mudar para o próximo labirinto
+        setTimeout(() => {
+            currentMazeIndex = (currentMazeIndex + 1) % mazeDataList.length;
+            playerX = 1;
+            playerY = 1;
+            laberinto += 1;  // Aumenta a fase
+            drawMaze();  // Redesenha o labirinto
+            console.log(laberinto)
+        }, 2000);
+    }
+}
+
 
 function drawMaze() {
     const maze = mazeDataList[currentMazeIndex];
@@ -133,11 +168,14 @@ function movePlayer(direction) {
         playerY = newY;
 
         if (maze[newY][newX] === 2) {
+            console.log(laberinto)
             if (laberinto === 3) {
-                alert("Você venceu o labirinto!");
-                resetGame();
-            } 
-            changeMaze();
+                showMazeMessage("Você venceu o labirinto!");
+               
+            } else{
+                changeMaze(laberinto);
+            }
+            
         }
 
         drawMaze();
@@ -145,30 +183,27 @@ function movePlayer(direction) {
 }
 
 function resetGame() {
-    // Reseta para o primeiro labirinto
+    laberinto = 1;
     currentMazeIndex = 0;
-    playerX = 1;  // Posição inicial do jogador (1, 1)
+    playerX = 1;
     playerY = 1;
-    timeLeft = 90; // Tempo inicial de 60 segundos
-    laberinto = 1; // Começa no labirinto 1
-
-    startCountdown(); // Inicia a contagem regressiva
-    drawMaze(); // Redesenha o labirinto com a posição inicial
+    timeLeft = 90;
+    clearInterval(timerInterval);
+    startCountdown();
+    drawMaze();
 }
 
-document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowUp") {
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp") {
         movePlayer("up");
-    } else if (e.key === "ArrowDown") {
+    } else if (event.key === "ArrowDown") {
         movePlayer("down");
-    } else if (e.key === "ArrowLeft") {
+    } else if (event.key === "ArrowLeft") {
         movePlayer("left");
-    } else if (e.key === "ArrowRight") {
+    } else if (event.key === "ArrowRight") {
         movePlayer("right");
     }
 });
 
-window.onload = () => {
-    startCountdown();
-    drawMaze();
-};
+drawMaze();
+startCountdown();

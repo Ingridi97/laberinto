@@ -1,7 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     text-align: center;
-    background-color: #BF6C3B;
+    background-color:#60A4BF;
+    background-size: cover;
     color: azure;
 }
 
@@ -17,30 +18,46 @@ body {
     width: 35px;
     height: 35px;
     display: inline-block;
-    border: 2px solid #A6056D;
-    background-color: #A6056D;
+    border: 2px solid#60A4BF;
+    background-color: #60A4BF;
 }
 
 .cell.wall {
     background-image: url('caminho/para/sua/textura-de-pedra.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: #7f7f7f;
-    border: 2px solid #444;
+    background-color: #8C3211;
+    border: 2px solid #260101;
     border-radius: 4px;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .cell.exit {
-    border: none;
+  
     background-color: green;
-    background-image: url("https://img.freepik.com/vetores-gratis/porta-de-madeira-na-parede-de-tijolos_1308-8758.jpg");
+    background-image: url("https://img.freepik.com/vetores-gratis/cena-da-paisagem-de-floresta-com-rio-e-muitas-arvores_1308-65371.jpg?uid=R200213735&ga=GA1.1.733596816.1747333713&semt=ais_hybrid&w=740");
     background-size: cover;
 }
 
 .cell.player {
-    border: none;
+    
     background-color: blue;
-    background-image: url("https://img.freepik.com/vetores-gratis/ilustracao-do-icone-do-vetor-dos-desenhos-animados-do-sorvete-sobremesa-comida-icone-conceito-vetor-isolado-estilo-flat-cartoon_138676-2521.jpg");
+    background-image: url("https://img.freepik.com/vetores-gratis/ilustracao-de-pato-de-desenho-animado-desenhada-a-mao_23-2150426725.jpg?uid=R200213735&ga=GA1.1.733596816.1747333713&semt=ais_hybrid&w=740");
     background-size: cover;
+}
+
+#maze-message {
+    position: fixed;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #A6056D;
+    color: azure;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: none;
+    z-index: 1000;
+    border: 2px solid #fff;
 }
