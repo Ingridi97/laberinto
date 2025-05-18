@@ -1,12 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-
-
-body {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-    text-align: center;
-    background-color:#60A4BF;
-    background-size: cover;
+html, body {
+    height: 100%;
+    overflow: hidden; /* Impede rolagem */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #60A4BF;
     color: azure;
+    text-align: center;
 }
 
 #maze {
@@ -21,14 +25,10 @@ body {
     width: 35px;
     height: 35px;
     display: inline-block;
-    border: 2px solid#60A4BF;
-    background-color: #60A4BF;
+    border: 2px solid #60A4BF;
 }
 
 .cell.wall {
-    background-image: url('caminho/para/sua/textura-de-pedra.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
     background-color: #8C3211;
     border: 2px solid #260101;
     border-radius: 4px;
@@ -36,16 +36,14 @@ body {
 }
 
 .cell.exit {
-  
     background-color: green;
-    background-image: url("https://img.freepik.com/vetores-gratis/cena-da-paisagem-de-floresta-com-rio-e-muitas-arvores_1308-65371.jpg?uid=R200213735&ga=GA1.1.733596816.1747333713&semt=ais_hybrid&w=740");
+    background-image: url("https://img.freepik.com/vetores-gratis/cena-da-paisagem-de-floresta-com-rio-e-muitas-arvores_1308-65371.jpg");
     background-size: cover;
 }
 
 .cell.player {
-    
     background-color: blue;
-    background-image: url("https://img.freepik.com/vetores-gratis/ilustracao-de-pato-de-desenho-animado-desenhada-a-mao_23-2150426725.jpg?uid=R200213735&ga=GA1.1.733596816.1747333713&semt=ais_hybrid&w=740");
+    background-image: url("https://img.freepik.com/vetores-gratis/ilustracao-de-pato-de-desenho-animado-desenhada-a-mao_23-2150426725.jpg");
     background-size: cover;
 }
 
@@ -71,9 +69,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #60A4BF;
-    color: azure;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #game-title {
@@ -82,7 +77,7 @@ body {
     margin-bottom: 20px;
 }
 
-#start-button {
+#start-button, #restart-button {
     padding: 10px 20px;
     font-size: 1.2rem;
     background-color: #A6056D;
@@ -92,7 +87,6 @@ body {
     cursor: pointer;
 }
 
-#start-button:hover {
+#start-button:hover, #restart-button:hover {
     background-color: #B64D80;
 }
-
