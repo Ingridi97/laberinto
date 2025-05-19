@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laberinto</title>
+    <link rel="stylesheet" href="laberinto.css">
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1 id="game-title">Laberinto</h1>
+        <button id="start-button">Iniciar Jogo</button>
+    </div>
+
+    <div id="victory-screen" style="display: none;">
+        <h1 id="victory-message">Você venceu o labirinto!</h1>
+        <button id="restart-victory-button">Reiniciar Jogo</button>
+    </div>
+
+<div id="game-over-screen">
+    <div id="game-over-message">
+        <h1>Game Over</h1>
+        <p>Você não conseguiu completar o labirinto a tempo!</p>
+        <button id="restart-button-game-over" onclick="restartGame()">Tentar Novamente</button>
+    </div>
+</div>
+
+<div id="timer"></div>
+
+    <h1 id="escape-title" style="display: none;">ESCAPE</h1>
+
+    <div id="time" style="display: none;">Tempo = 0</div>
+    <div id="maze" style="display: none;"></div>
+    <div id="maze-message"></div>
+
+    <button id="restart-button" onclick="resetGame()" style="display: none;">Reiniciar</button>
+
+    <script src="laberinto.js"></script>
+</body>
+</html>
