@@ -78,45 +78,55 @@ function startCountdown() {
 
 function showMazeMessage(text) {
     const messageBox = document.getElementById("maze-message");
+
+    // Pausa o temporizador
+    clearInterval(timerInterval);
+
     messageBox.innerText = text;
     messageBox.style.display = "block";  // Exibe a mensagem
 
     setTimeout(() => {
-        messageBox.style.display = "none";  // Esconde a mensagem após 2 segundos
+        messageBox.style.display = "none";  // Esconde a mensagem
+        startCountdown(); // Retoma o temporizador após esconder a mensagem
     }, 2000);
 }
 
+
 function changeMaze() {
-    console.log(laberinto)
-    if (laberinto === 2) {
-        // Exibe "Fase Final" quando o jogador avança para a fase 3
+    console.log(laberinto);
+
+    if (laberinto === 3) {
+        // Exibe "Você venceu" após completar a fase 3
+        showMazeMessage("Você venceu o labirinto!");
+        
+        setTimeout(() => {
+            clearInterval(timerInterval); // Para o temporizador
+            showVictoryScreen();  // Exibe tela de vitória
+        }, 2000);
+    } else if (laberinto === 2) {
+        // Vai para a fase final (fase 3)
         showMazeMessage("Fase Final!");
 
-        // Espera 2 segundos antes de avançar para a fase 3
         setTimeout(() => {
-            currentMazeIndex = (currentMazeIndex + 1) % mazeDataList.length;
+            currentMazeIndex++;
             playerX = 1;
             playerY = 1;
-            laberinto += 1;  // Aumenta para a fase 3
-            drawMaze();  // Redesenha o labirinto
-            console.log(laberinto)
+            laberinto++;
+            drawMaze();
         }, 2000);
-        
-    } else if(laberinto === 1){
-        // Exibe a mensagem "Você passou de fase" para outras fases
+    } else if (laberinto === 1) {
         showMazeMessage("Você passou de fase!");
 
-        // Espera 2 segundos antes de mudar para o próximo labirinto
         setTimeout(() => {
-            currentMazeIndex = (currentMazeIndex + 1) % mazeDataList.length;
+            currentMazeIndex++;
             playerX = 1;
             playerY = 1;
-            laberinto += 1;  // Aumenta a fase
-            drawMaze();  // Redesenha o labirinto
-            console.log(laberinto)
+            laberinto++;
+            drawMaze();
         }, 2000);
     }
 }
+
 
 
 function drawMaze() {
@@ -172,14 +182,20 @@ function movePlayer(direction) {
         playerY = newY;
 
         if (maze[newY][newX] === 2) {
-            console.log(laberinto)
             if (laberinto === 3) {
-                showMazeMessage("Você venceu o labirinto!");
-            } else{
-                changeMaze(laberinto);
+                if (timeLeft > 0) {
+                    clearInterval(timerInterval); // Para o timer
+                    showVictoryScreen(); // Vai direto para a tela de vitória
+                } else {
+                    showMazeMessage("Tempo esgotado! Você perdeu.");
+                    resetGame();
+                }
+            } else {
+                changeMaze();
             }
-            
         }
+        
+        
 
         drawMaze();
     }
@@ -200,10 +216,35 @@ function resetGame() {
     document.getElementById('time').style.display = 'none';
     document.getElementById('escape-title').style.display = 'none';
     document.getElementById('restart-button').style.display = 'none';
+    document.getElementById('victory-screen').style.display = 'none'; // Esconde tela de vitória
 
     // Mostrar tela inicial
     document.getElementById('start-screen').style.display = 'flex';
+
+    // Reseta a tela de vitória
+    document.getElementById('victory-message').innerText = "";
 }
+
+
+function showVictoryScreen() {
+    // Esconde elementos do jogo
+    document.getElementById('maze').style.display = 'none';
+    document.getElementById('time').style.display = 'none';
+    document.getElementById('escape-title').style.display = 'none';
+    document.getElementById('restart-button').style.display = 'none';
+
+    // Exibe a tela de vitória
+    document.getElementById('victory-screen').style.display = 'flex';
+
+    // Exibe a mensagem de vitória
+    document.getElementById('victory-message').innerText = "Você venceu o labirinto!";
+}
+
+// Função para reiniciar o jogo a partir da tela de vitória
+document.getElementById('restart-victory-button').addEventListener('click', function () {
+    resetGame();
+});
+
 
 
 

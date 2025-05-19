@@ -8,14 +8,14 @@ html, body {
     height: 100%;
     overflow: hidden; /* Impede rolagem */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #60A4BF;
-    color: azure;
+    background-color: #60A4BF; /* Cor de fundo original */
+    color: azure; /* Cor de texto original */
     text-align: center;
 }
 
 #maze {
     display: grid;
-    grid-template-columns: repeat(30, 35px);
+    grid-template-columns: repeat(30, 35px); /* Ajuste para um grid de 30 colunas */
     gap: 0;
     margin: 20px auto;
     width: max-content;
@@ -24,43 +24,42 @@ html, body {
 .cell {
     width: 35px;
     height: 35px;
-    display: inline-block;
-    border: 2px solid #60A4BF;
+    border: 2px solid #60A4BF; /* Borda com a cor de fundo */
 }
 
 .cell.wall {
-    background-color: #8C3211;
-    border: 2px solid #260101;
+    background-color: #8C3211; /* Cor original das paredes */
+    border: 2px solid #260101; /* Cor da borda das paredes */
     border-radius: 4px;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.4); /* Sombras mais intensas nas paredes */
 }
 
 .cell.exit {
-    background-color: green;
+    background-color: green; /* Cor da saída */
     background-image: url("https://img.freepik.com/vetores-gratis/cena-da-paisagem-de-floresta-com-rio-e-muitas-arvores_1308-65371.jpg");
-    background-size: cover;
+    background-size: cover; /* Imagem de fundo para a saída */
 }
 
 .cell.player {
-    background-color: blue;
+    background-color: blue; /* Cor do jogador */
     background-image: url("https://img.freepik.com/vetores-gratis/ilustracao-de-pato-de-desenho-animado-desenhada-a-mao_23-2150426725.jpg");
-    background-size: cover;
+    background-size: cover; /* Imagem de fundo para o jogador */
 }
 
 #maze-message {
     position: fixed;
-    top: 300px;
+    top: 50%; /* Centralizado verticalmente */
     left: 50%;
-    transform: translateX(-50%);
-    background-color: #A6056D;
-    color: azure;
+    transform: translate(-50%, -50%); /* Centraliza a mensagem */
+    background-color: #A6056D; /* Cor de fundo da mensagem */
+    color: azure; /* Cor do texto da mensagem */
     padding: 15px 30px;
     font-size: 20px;
     font-weight: bold;
     border-radius: 8px;
-    display: none;
+    display: none; /* Inicialmente oculto */
     z-index: 1000;
-    border: 2px solid #fff;
+    border: 2px solid #fff; /* Borda branca ao redor da mensagem */
 }
 
 #start-screen {
@@ -80,13 +79,13 @@ html, body {
 #start-button, #restart-button {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #A6056D;
-    color: white;
+    background-color: #A6056D; /* Cor do botão */
+    color: white; /* Cor do texto no botão */
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 #start-button:hover, #restart-button:hover {
-    background-color: #B64D80;
+    background-color: #B64D80; /* Cor ao passar o mouse */
 }
