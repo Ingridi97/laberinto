@@ -225,6 +225,16 @@ function resetGame() {
     document.getElementById('victory-message').innerText = "";
 }
 
+function showGameOverScreen() {
+    document.getElementById('game-over-screen').style.display = 'flex';
+}
+
+document.getElementById('restart-button-game-over').addEventListener('click', function() {
+    // Aqui você pode resetar o jogo e reiniciar os labirintos
+    location.reload();  // Isso recarrega a página e reinicia o jogo
+});
+
+
 
 function showVictoryScreen() {
     // Esconde elementos do jogo
@@ -274,4 +284,3 @@ document.getElementById('start-button').addEventListener('click', function () {
     drawMaze();
     startCountdown();
 });
-
